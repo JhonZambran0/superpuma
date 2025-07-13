@@ -38,18 +38,25 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Configurar headers CORS
+  // Configurar headers CORS específicos para Vercel
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
+  // Manejar preflight OPTIONS request
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
+  // Log para debug en Vercel
+  console.log('Method received:', req.method);
+  console.log('Body received:', req.body);
+
   if (req.method !== "POST") {
+    console.log('Method not allowed:', req.method);
     return res.status(405).json({
-      message: "Método no permitido. Solo se permite POST.",
+      message: `Método ${req.method} no permitido. Solo se permite POST.`,
       success: false,
     });
   }
@@ -65,9 +72,11 @@ export default async function handler(
     }
 
     // Buscar usuario en los datos mock
+    console.log('Searching user with email:', correo);
     const user = mockUsers.find(u => u.correo === correo && u.contraseña === contraseña);
     
     if (user) {
+      console.log('User found:', user.correo);
       const userResponse = {
         _id: user._id,
         id: user.id,
@@ -90,6 +99,7 @@ export default async function handler(
       });
     }
 
+    console.log('User not found for email:', correo);
     return res.status(401).json({
       message: "Credenciales incorrectas",
       success: false,
