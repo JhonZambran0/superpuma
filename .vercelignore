@@ -1,16 +1,26 @@
-# Excluir archivos problemáticos en Vercel
-*.ts
-controllers/
-database/
-models/
-# Mantener solo lo esencial
-!pages/
-!public/
-!styles/
-!next.config.js
-!package.json
-!vercel.json
+# Archivos temporales y de desarrollo
+.env.local
+.env.development
+.env.test
 
-# Excluir archivos específicos que causan problemas
-controllers/mongo/
-database/schemas.ts
+# Archivos de documentación
+*.md
+README*
+
+# Archivos de configuración de desarrollo
+.vscode/
+.idea/
+
+# Cache y archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# Logs
+logs/
+*.log
+
+# Archivos de backup
+*.backup
+*.old
+*.orig
