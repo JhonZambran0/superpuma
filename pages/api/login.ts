@@ -27,8 +27,13 @@ export default async function handler(
       });
     }
 
-    // Buscar usuario por nombre de usuario
-    const user = await UserModel.findOne({ usuario: usuario });
+    // Buscar usuario por nombre de usuario o correo electrónico
+    const user = await UserModel.findOne({ 
+      $or: [
+        { usuario: usuario },
+        { correo: usuario }
+      ]
+    });
 
     if (!user) {
       return res.status(401).json({
