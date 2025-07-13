@@ -45,7 +45,7 @@ const ReporteCalibracionIndividual = () => {
 
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: `Reporte_Calibracion_${registro?._id ?? "sin_id"}`,
+    documentTitle: `Reporte_Calibracion_${(registro as any)?._id ?? "sin_id"}`,
   });
 
   const herramienta = registro?.herramientas?.[0];

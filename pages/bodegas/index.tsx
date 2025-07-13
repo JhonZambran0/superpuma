@@ -105,7 +105,7 @@ export const BodegasPage = () => {
   const exportToPDF = () => {
     const bodegasFiltradas = tableData.filter((b) =>
       b.nombreBodega?.toLowerCase().includes(filterText.toLowerCase()) ||
-      b.bodegueroAsignado?.toLowerCase().includes(filterText.toLowerCase()) ||
+      b.bodegueroAsignado?.nombre?.toLowerCase().includes(filterText.toLowerCase()) ||
       b.creadorNombre?.toLowerCase().includes(filterText.toLowerCase())
     );
     generateReporteBodegas("REPORTE DE BODEGAS", bodegasFiltradas);

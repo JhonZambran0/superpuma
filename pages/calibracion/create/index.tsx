@@ -62,7 +62,7 @@ export const RegistroCreate = () => {
       )
       .map((h) => ({
         ...h,
-        id: h.id || h._id,
+        id: h.id || (h as any)._id,
       }));
 
     setHerramientas(herramientasDisponibles);

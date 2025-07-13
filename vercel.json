@@ -1,17 +1,11 @@
 {
   "version": 2,
-  "name": "cemae-app",
+  "name": "superpuma",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "functions": {
     "pages/api/**/*.ts": {
       "maxDuration": 30
-    },
-    "pages/api/login.ts": {
-      "maxDuration": 15
-    },
-    "pages/api/health.ts": {
-      "maxDuration": 5
     }
   },
   "env": {
@@ -22,33 +16,5 @@
       "NEXT_TELEMETRY_DISABLED": "1"
     }
   },
-  "regions": ["iad1"],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ]
+  "regions": ["iad1"]
 }

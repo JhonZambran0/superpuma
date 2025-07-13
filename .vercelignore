@@ -1,7 +1,0 @@
-# Solo excluir archivos realmente innecesarios
-.vscode/
-.idea/
-*.log
-.env.local
-.env.development
-.env.test
