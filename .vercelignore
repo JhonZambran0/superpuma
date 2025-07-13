@@ -1,26 +1,7 @@
-# Archivos temporales y de desarrollo
+# Solo excluir archivos realmente innecesarios
+.vscode/
+.idea/
+*.log
 .env.local
 .env.development
 .env.test
-
-# Archivos de documentación
-*.md
-README*
-
-# Archivos de configuración de desarrollo
-.vscode/
-.idea/
-
-# Cache y archivos temporales
-*.tmp
-*.temp
-.cache/
-
-# Logs
-logs/
-*.log
-
-# Archivos de backup
-*.backup
-*.old
-*.orig
