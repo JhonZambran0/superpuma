@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
+import Image from "next/image";
 import Router from "next/router";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "react-bootstrap";
+import { useReactToPrint } from "react-to-print";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../controllers/hooks/use_auth";
 import HttpClient from "../../../controllers/utils/http_client";
-import { ResponseData, Calibracion } from "../../../models";
+import { Calibracion, ResponseData } from "../../../models";
 import Sidebar from "../../components/sidebar";
-import { useReactToPrint } from "react-to-print";
-import { Button } from "react-bootstrap";
-import Image from "next/image";
 
 const ReporteCalibracionIndividual = () => {
   const { auth } = useAuth();

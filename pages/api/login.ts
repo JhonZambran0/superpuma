@@ -1,7 +1,7 @@
+import bcrypt from "bcryptjs";
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../database/connect/mongo";
 import { UserModel } from "../../database/schemas";
-import bcrypt from "bcryptjs";
 
 export default async function handler(
   req: NextApiRequest,

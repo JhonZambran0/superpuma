@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import bcrypt from "bcryptjs";
 import dbConnect from "../../database/connect/mongo";
 import { UserModel } from "../../database/schemas";
 
@@ -26,16 +27,27 @@ export default async function handler(
       return res.status(200).json({
         message: "Los usuarios ya están inicializados",
         success: true,
-        data: existingUsers
+        data: existingUsers.map(user => ({
+          id: user.id,
+          usuario: user.usuario,
+          nombre: user.nombre,
+          correo: user.correo,
+          rol: user.rol,
+          estado: user.estado
+        }))
       });
     }
+
+    // Hash de las contraseñas
+    const hashedPassword1 = await bcrypt.hash("Pa$word1992", 10);
+    const hashedPassword2 = await bcrypt.hash("admin", 10);
 
     // Crear usuarios de prueba
     const usersToCreate = [
       {
         number: 1,
         usuario: "admin",
-        contraseña: "Pa$word1992",
+        contraseña: hashedPassword1,
         nombre: "Administrador",
         correo: "admin@hotmail.com",
         identificacion: "12345678",
@@ -46,12 +58,12 @@ export default async function handler(
       {
         number: 2,
         usuario: "marco92",
-        contraseña: "admin",
+        contraseña: hashedPassword2,
         nombre: "Marco Antonio",
         correo: "marco92antonio@outlook.com",
         identificacion: "87654321",
         telefono: "555-0002",
-        rol: 1, // Bodeguero
+        rol: 0, // Admin también
         estado: "activo"
       }
     ];

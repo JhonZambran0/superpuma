@@ -1,13 +1,13 @@
+import Router from "next/router";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import Sidebar from "../components/sidebar";
 import { toast } from "react-toastify";
 import { useAuth } from "../../controllers/hooks/use_auth";
-import { useEffect, useRef, useState } from "react";
+import { CheckPermissions } from "../../controllers/utils/check_permissions";
 import HttpClient from "../../controllers/utils/http_client";
 import { Bodega, Herramienta } from "../../models";
+import Sidebar from "../components/sidebar";
 import TreeTable, { ColumnData } from "../components/tree_table";
-import { CheckPermissions } from "../../controllers/utils/check_permissions";
-import Router from "next/router";
 
 
 export const BodegasPage = () => {

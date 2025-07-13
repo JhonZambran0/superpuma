@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   poweredByHeader: false,
+  swcMinify: false,
   compiler: {
     styledComponents: true,
   },
@@ -14,14 +15,9 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-      },
-    ],
+    domains: ['firebasestorage.googleapis.com'],
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -30,9 +26,20 @@ const nextConfig = {
         tls: false,
         crypto: false,
         canvas: false,
+        encoding: false,
       };
     }
+    
+    // Ignorar warnings específicos
+    config.ignoreWarnings = [
+      /Module not found/,
+      /Can't resolve/,
+    ];
+    
     return config;
+  },
+  experimental: {
+    esmExternals: false,
   },
 };
 

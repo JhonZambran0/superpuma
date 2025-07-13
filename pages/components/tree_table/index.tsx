@@ -1,17 +1,17 @@
 // Importaciones de componentes de DevExtreme y React
 import TreeList, {
-  Column,
-  HeaderFilter,
-  SearchPanel,
-  Button,
-  Editing,
-  Scrolling,
-  Paging,
-  Pager,
-  Selection,
+    Button,
+    Column,
+    Editing,
+    HeaderFilter,
+    Pager,
+    Paging,
+    Scrolling,
+    SearchPanel,
+    Selection,
 } from "devextreme-react/tree-list";
-import { useEffect, useState } from "react";
 import { loadMessages } from "devextreme/localization";
+import { useEffect, useState } from "react";
 import TableContainer, { TableContainerProps } from "./styles";
 
 // Tipado para las columnas de la tabla
