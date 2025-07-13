@@ -5,9 +5,9 @@ import HttpClient from "../../controllers/utils/http_client";
 import Sidebar from "../components/sidebar";
 import { Herramienta, Bodega } from "../../models";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell } from "recharts";
-import { generateReporteSolicitudes } from "../solicitudes/reporte/reporteSolicitudes";
-import { generateReporteCalibraciones } from "../calibracion/reporte/reporteCalibraciones";
-import { generateReporteHerramienta } from "../bodegas/reporte/reporteHerramientas";
+import { generateReporteSolicitudes } from "../../utils/reports/reporteSolicitudes";
+import { generateReporteCalibraciones } from "../../utils/reports/reporteCalibraciones";
+import { generateReporteHerramienta } from "../../utils/reports/reporteHerramientas";
 
 export default function DashboardBodeguero() {
   const { auth } = useAuth();
