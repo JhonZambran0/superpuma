@@ -18,11 +18,14 @@ export default async function handler(
   try {
     await dbConnect();
 
-    const { usuario, contraseña } = req.body;
+    const { usuario, correo, contraseña } = req.body;
 
-    if (!usuario || !contraseña) {
+    // Aceptar tanto 'usuario' como 'correo' del frontend
+    const userIdentifier = usuario || correo;
+
+    if (!userIdentifier || !contraseña) {
       return res.status(400).json({
-        message: "Usuario y contraseña son requeridos",
+        message: "Usuario/correo y contraseña son requeridos",
         success: false,
       });
     }
@@ -30,8 +33,8 @@ export default async function handler(
     // Buscar usuario por nombre de usuario o correo electrónico
     const user = await UserModel.findOne({ 
       $or: [
-        { usuario: usuario },
-        { correo: usuario }
+        { usuario: userIdentifier },
+        { correo: userIdentifier }
       ]
     });
 
