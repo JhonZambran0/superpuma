@@ -1,15 +1,15 @@
-import mongoose, { mongo, Schema } from "mongoose";
+import mongoose from "mongoose";
 import {
-  Auditory,
-  Backup,
-  Bodega,
-  Calibracion,
-  Herramienta,
-  ModelosHerramienta,
-  Solicitude,
-  Ubicaciones,
-  Usuario,
-  } from "../models";
+    Auditory,
+    Backup,
+    Bodega,
+    Calibracion,
+    Herramienta,
+    ModelosHerramienta,
+    Solicitude,
+    Ubicaciones,
+    Usuario,
+} from "../models";
 ////////////// Modelo para los usuarios////////////////
 const UserSchema = new mongoose.Schema<Usuario>(
   {
@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema<Usuario>(
 
 // Duplicate the ID field.
 UserSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 // Ensure virtual fields are serialised.
@@ -57,7 +57,7 @@ const UbicacionesSchema = new mongoose.Schema<Ubicaciones>(
 
 // Duplicate the ID field.
 UbicacionesSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 // Ensure virtual fields are serialised.
@@ -79,7 +79,7 @@ const ModeloHerramientaSchema = new mongoose.Schema<ModelosHerramienta>(
 
 // Duplicate the ID field.
 ModeloHerramientaSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 // Ensure virtual fields are serialised.
@@ -114,8 +114,8 @@ const HerramientaSchema = new mongoose.Schema<Herramienta>(
 
 // Duplicate the ID field.
 HerramientaSchema.virtual("id").get(function () {
-  return typeof this._id === "object" && this._id.toHexString
-    ? this._id.toHexString()
+  return typeof this._id === "object" && this._id.toString
+    ? this._id.toString()
     : this._id;
 });
 
@@ -153,7 +153,7 @@ const BodegaSchema = new mongoose.Schema<Bodega>(
 );
 // Duplicate the ID field.
 BodegaSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 // Ensure virtual fields are serialised.
 BodegaSchema.set("toJSON", {
@@ -187,7 +187,7 @@ const SolicitudeSchema = new mongoose.Schema<Solicitude>(
 );
 
 SolicitudeSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 SolicitudeSchema.set("toJSON", {
@@ -195,7 +195,8 @@ SolicitudeSchema.set("toJSON", {
 });
 
 export const SolicitudeModel =
-  mongoose.models.Solicitudes || mongoose.model("Solicitudes", SolicitudeSchema);
+  (mongoose.models.Solicitudes as mongoose.Model<Solicitude>) || 
+  mongoose.model<Solicitude>("Solicitudes", SolicitudeSchema);
 
 
 //////////////////////Modelo para calibracion//////////////////////////
@@ -217,7 +218,7 @@ const CalibracionSchema = new mongoose.Schema<Calibracion>(
 
 // Duplicate the ID field.
 CalibracionSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 // Ensure virtual fields are serialised.
@@ -242,7 +243,7 @@ const BackupBodegaSchema = new mongoose.Schema<Backup>(
 );
 // Duplicate the ID field.
   BackupBodegaSchema.virtual("id").get(function () {
-    return this._id.toHexString();
+    return this._id.toString();
   });
 // Ensure virtual fields are serialised.  
   BackupBodegaSchema.set("toJSON", {
@@ -266,7 +267,7 @@ const BackupSolicitudesSchema = new mongoose.Schema<Backup>(
 
 // Duplicate the ID field.
 BackupSolicitudesSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 // Ensure virtual fields are serialised.
 BackupSolicitudesSchema.set("toJSON", {
@@ -289,7 +290,7 @@ const BackupUsuariosSchema = new mongoose.Schema<Backup>(
 );
 // Duplicate the ID field.
 BackupUsuariosSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 }); 
 // Ensure virtual fields are serialised.
 BackupUsuariosSchema.set("toJSON", {
@@ -311,7 +312,7 @@ const BackupCalibracionSchema = new mongoose.Schema<Backup>(
   );
 // Duplicate the ID field.  
 BackupCalibracionSchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 // Ensure virtual fields are serialised.
 BackupCalibracionSchema.set("toJSON", {
@@ -334,7 +335,7 @@ const AuditorySchema = new mongoose.Schema<Auditory>(
 
 // Duplicate the ID field.
 AuditorySchema.virtual("id").get(function () {
-  return this._id.toHexString();
+  return this._id.toString();
 });
 
 // Ensure virtual fields are serialised.

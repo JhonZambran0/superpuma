@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // fetch the posts
-  const herramientas = await SolicitudeModel.find({});
+  const herramientas = await SolicitudeModel.find({}).exec();
 
   if (req.query.dates !== undefined) {
     const dates: Array<string> = (req.query.dates as string).split("¡");

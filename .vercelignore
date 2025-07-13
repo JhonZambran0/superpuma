@@ -1,0 +1,16 @@
+# Excluir archivos problemáticos en Vercel
+*.ts
+controllers/
+database/
+models/
+# Mantener solo lo esencial
+!pages/
+!public/
+!styles/
+!next.config.js
+!package.json
+!vercel.json
+
+# Excluir archivos específicos que causan problemas
+controllers/mongo/
+database/schemas.ts
