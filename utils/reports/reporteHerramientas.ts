@@ -1,8 +1,8 @@
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
-import { Herramienta } from "../../../models";
-
-export const generateReporteHerramienta = (title: string, herramientas: Herramienta[]) => {
+export const generateReporteHerramienta = async (title: string, herramientas: any[]) => {
+  // Import dinámico para evitar problemas en el build
+  const jsPDF = (await import('jspdf')).default;
+  const autoTable = (await import('jspdf-autotable')).default;
+  
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
 

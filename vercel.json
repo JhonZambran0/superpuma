@@ -1,23 +1,5 @@
 {
   "version": 2,
-  "name": "superpuma",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --legacy-peer-deps",
-  "functions": {
-    "pages/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "NODE_ENV": "production",
-    "SKIP_BUILD_STATIC_GENERATION": "true"
-  },
-  "build": {
-    "env": {
-      "NEXT_TELEMETRY_DISABLED": "1",
-      "SKIP_BUILD_STATIC_GENERATION": "true"
-    }
-  },
-  "regions": ["iad1"],
-  "outputDirectory": ".next"
+  "buildCommand": "next build",
+  "installCommand": "npm install"
 }

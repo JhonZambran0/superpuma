@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Form } from "react-bootstrap";
-import Sidebar from "../components/sidebar";
+import Router from "next/router";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useAuth } from "../../controllers/hooks/use_auth";
-import { useEffect, useState } from "react";
+import { CheckPermissions } from "../../controllers/utils/check_permissions";
 import HttpClient from "../../controllers/utils/http_client";
 import { Bodega, Herramienta } from "../../models";
-import TreeTable, { ColumnData } from "../components/tree_table";
-import Router from "next/router";
-import { CheckPermissions } from "../../controllers/utils/check_permissions";
 import { generateReporteHerramienta } from "../../utils/reports/reporteHerramientas";
+import Sidebar from "../components/sidebar";
+import TreeTable, { ColumnData } from "../components/tree_table";
 
 export const HerramientasPage = () => {
   const { auth } = useAuth();

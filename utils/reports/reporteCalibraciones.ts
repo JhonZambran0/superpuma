@@ -1,7 +1,8 @@
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
-
-export const generateReporteCalibraciones = (title: string, calibraciones: any[]) => {
+export const generateReporteCalibraciones = async (title: string, calibraciones: any[]) => {
+  // Import dinámico para evitar problemas en el build
+  const jsPDF = (await import('jspdf')).default;
+  const autoTable = (await import('jspdf-autotable')).default;
+  
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
 

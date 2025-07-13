@@ -1,7 +1,8 @@
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
-
-export const generateReporteBodegas = (title: string, bodegas: any[]) => {
+export const generateReporteBodegas = async (title: string, bodegas: any[]) => {
+  // Import dinámico para evitar problemas en el build
+  const jsPDF = (await import('jspdf')).default;
+  const autoTable = (await import('jspdf-autotable')).default;
+  
   const doc = new jsPDF({
     orientation: "portrait",
     unit: "mm",

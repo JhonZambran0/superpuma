@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Bar, BarChart, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useAuth } from "../../controllers/hooks/use_auth";
 import HttpClient from "../../controllers/utils/http_client";
-import Sidebar from "../components/sidebar";
-import { Herramienta, Bodega } from "../../models";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell } from "recharts";
-import { generateReporteSolicitudes } from "../../utils/reports/reporteSolicitudes";
+import { Bodega, Herramienta } from "../../models";
 import { generateReporteCalibraciones } from "../../utils/reports/reporteCalibraciones";
 import { generateReporteHerramienta } from "../../utils/reports/reporteHerramientas";
+import { generateReporteSolicitudes } from "../../utils/reports/reporteSolicitudes";
+import Sidebar from "../components/sidebar";
 
 export default function DashboardBodeguero() {
   const { auth } = useAuth();
