@@ -159,8 +159,7 @@ BodegaSchema.virtual("id").get(function () {
 BodegaSchema.set("toJSON", {
   virtuals: true,
 });
-export const BodegaModel =
-  mongoose.models.Bodegas || mongoose.model("Bodegas", BodegaSchema);
+export const BodegaModel = mongoose.models.Bodegas as mongoose.Model<Bodega> || mongoose.model<Bodega>("Bodegas", BodegaSchema);
 
 
 // //////////////Modelo para las solicitudes//////////////////

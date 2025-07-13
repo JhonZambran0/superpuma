@@ -14,7 +14,16 @@ export default async function handler(
     const userName = req.headers.username as string;
 
     // Buscar la bodega
-    const bodega = await BodegaModel.findById(_id);
+    let bodega;
+    try {
+        bodega = await BodegaModel.findById(_id);
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error al buscar la bodega",
+            success: false,
+        });
+    }
+    
     if (!bodega) {
         return res.status(404).json({
             message: "Bodega no encontrada",
